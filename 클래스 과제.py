@@ -3,7 +3,7 @@ class human():
     HP=100
     MP=100
     def meet(self):
-        print("김산호:안녕하세요")
+        print("%s:안녕하세요"%human.name)
     
 
 class player(human):
@@ -14,10 +14,9 @@ class player(human):
        
 class npc(human):
     name="NPC"
-    HP=100
     MP=0
     def meet(self):
-        print("NPC:안녕하세요")
+        print("%s:안녕하세요"%npc.name)
 
 class enemy(human):
     DP=25
