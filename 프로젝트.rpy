@@ -79,6 +79,16 @@ image nana_patient shadow = "nana_patient_shadow.png"
 image nana_patient back = "nana_patient_back.png"
 image nana_patient surpriseh = "nana_patient_surpriseh.png"
 image nana_patient shadowh = "nana_patient_shadowh.png"
+image nana_ending idle = "nana_ending_idle.png"
+image nana_ending idleh = "nana_ending_idleh.png"
+image nana_ending shadow = "nana_ending_shadow.png"
+image nana_ending shadowh = "nana_ending_shadowh.png"
+image nana_ending smile = "nana_ending_smile.png"
+image nana_ending smileh = "nana_ending_smileh.png"
+image nana_ending brave = "nana_ending_brave.png"
+image nana_ending braveh = "nana_ending_braveh.png"
+image nana_ending surpriseh = "nana_ending_surpriseh.png"
+
 
 #김혜원
 image hone_uniform angry = "hone_uniform_angry.png"
@@ -98,7 +108,13 @@ image hone_c1 idle = "hone_c1_idle.png"
 image hone_c1 smile = "hone_c1_smile.png"
 image hone_c1 idleh = "hone_c1_idleh.png"
 image hone_c1 angry = "hone_c1_angry.png"
-
+image hone_ending idle = "hone_ending_idle.png"
+image hone_ending idleh = "hone_ending_idleh.png"
+image hone_ending shadow = "hone_ending_shadow.png"
+image hone_ending shadowh = "hone_ending_shadowh.png"
+image hone_ending smile = "hone_ending_smile.png"
+image hone_ending smileh = "hone_ending_smileh.png"
+image hone_ending surpriseh = "hone_ending_surpriseh.png"
 
 #정이주
 image ejoo slip = "ejoo_slip.png"
@@ -117,6 +133,62 @@ image ejoo_c1 shadow = "ejoo_c1_shadow.png"
 image ejoo_c1 shadowh = "ejoo_c1_shadowh.png"
 image ejoo_c1 smile = "ejoo_c1_smile.png"
 image ejoo_c1 surprise = "ejoo_c1_surprise.png"
+image ejoo_ending idle = "ejoo_ending_idle.png"
+image ejoo_ending idleh = "ejoo_ending_idleh.png"
+image ejoo_ending shadow = "ejoo_ending_shadow.png"
+image ejoo_ending shadowh = "ejoo_ending_shadowh.png"
+image ejoo_ending smile = "ejoo_ending_smile.png"
+image ejoo_ending smileh = "ejoo_ending_smileh.png"
+image ejoo_ending surpriseh = "ejoo_ending_surpriseh.png"
+image ejoo_ending 1 = "ejoo_ending_1.png"
+image ejoo_ending 2 = "ejoo_ending_2.png"
+image ejoo_ending 3 = "ejoo_ending_3.png"
+image ejoo_ending 4 = "ejoo_ending_4.png"
+image ejoo_ending 5 = "ejoo_ending_5.png"
+image ejoo_ending 6 = "ejoo_ending_6.png"
+init:
+    image ejoo_ending y:
+        'ejoo_ending_1.png'
+        pause 0.05
+        'ejoo_ending_2.png'
+        pause 0.05
+        'ejoo_ending_3.png'
+        pause 0.05
+        'ejoo_ending_4.png'
+        pause 0.05
+        'ejoo_ending_5.png'
+        pause 0.05
+        'ejoo_ending_6.png'
+        pause 0.05
+        repeat
+image ejoo_ending brave = "ejoo_ending_brave.png"
+image ejoo_ending braveh = "ejoo_ending_braveh.png"
+image ejoo_ending driver = "ejoo_ending_driver.png"
+image ejoo_ending hand1 = "ejoo_ending_hand1.png"
+image ejoo_ending hand2 = "ejoo_ending_hand2.png"
+image ejoo_ending 7 = "ejoo_ending_7.png"
+image ejoo_ending y1 = "ejoo_ending_y1.png"
+image ejoo_ending y2 = "ejoo_ending_y2.png"
+image ejoo_ending y3 = "ejoo_ending_y3.png"
+image ejoo_ending y4 = "ejoo_ending_y4.png"
+image ejoo_ending y5 = "ejoo_ending_y5.png"
+init:
+    image ejoo_ending yy:
+        'ejoo_ending_y1.png'
+        pause 0.05
+        'ejoo_ending_y2.png'
+        pause 0.05
+        'ejoo_ending_y3.png'
+        pause 0.05
+        'ejoo_ending_y4.png'
+        pause 0.05
+        'ejoo_ending_y5.png'
+        pause 0.05
+        repeat
+
+
+
+
 
 #엄마
 image mom angry = "mom_angry.png"
@@ -133,6 +205,7 @@ image teacher idle = "teacher_idle.png"
 image friend_uniform idle = "friend_uniform_idle.png"
 image friend_uniform question = "friend_uniform_question.png"
 image friend_uniform smile = "friend_uniform_smile.png"
+image friend_ending idle = "friend_ending_idle.png"
 
 #할머니
 image grandmother smile = "grandmother_smile.png"
@@ -200,6 +273,10 @@ image hospital_roby = "background/hospital_roby.jpg"
 image hospital_morning = "background/hospital_morning.jpg"
 image hospital_night = "background/hospital_night.jpg"
 image hospital_desk = "background/hospital_desk.jpg"
+image ejoo_ending = "background/ejoo_ending.jpg"
+image ending1 = "background/ending1.jpg"
+image ending2 = "background/ending2.jpg"
+
 
 #캐릭터 정의
 define n = Character("나나")
@@ -244,6 +321,7 @@ hide room_morning
 scene alley
 hide crosswalk
 "그 순간"
+scene alley with vpunch
 "쾅!"
 show nana slip with dissolve
 "???" "아야야...이따이요..."
@@ -312,7 +390,7 @@ t "지각의 사정은 알겠고, 너네 둘이 어떻게 아는 사이인 거�
 "아... 그게 말이죠..."
 show nana surprise
 n "아침에 이 남자애가 나한테 몸을 들이댔다!"
-show nana crying
+show nana crying with dissolve
 n "기세가 너무 강력해 울음이 나올 뻔 했지만"
 show nana smile
 n "나를 따뜻하게 감싸주었다!"
@@ -528,6 +606,7 @@ menu:
         h "ㅇ... 알겠으니까 그만... 창피하단말이야...///"
         show nana surprise at right with easeinright
         n "어라? 혜원짱 우리 오늘은 [player_name]군이랑 같이 밥 먹는 거야?"
+        show hone_uniform idleh with dissolve
         h "어... 뭐, 그렇게 됐어"
         show nana smile
         n "야호! 빨리 급식먹으러 가자!"
@@ -1365,7 +1444,7 @@ show nana_c2 back with dissolve
 "그때 나나의 머리 뒤에 벌레가 붙어있다"
 menu:
     "잡아준다":
-        show nana_c2 backclap with dissolve
+        show nana_c2 backclap with vpunch
         "짝!"
         show nana_c2 idle
         n "히익! 갑자기 뭐야?"
@@ -2053,7 +2132,10 @@ scene room_morning with dissolve
 "하... 어떡하지..."
 "긴 고민끝에..."
 "정했다...!"
-if ejoo.y_point == 6:
+scene black
+"[10월 10일]"
+
+if ejoo.y_point == 8:
     jump ejoo_yending
     return
 elif ejoo.h_point >= 100 and hone.h_point >= 100 and nana.h_point >= 100:
@@ -2081,85 +2163,135 @@ else:
     return
 
 label ejoo_yending:
+    scene ejoo_ending with dissolve
     "아슬아슬하게 도착했다..."
     "앗 저기 보인다!"
     "여기야~"
     "???" "앗"
+    show ejoo_ending idle
     e "오셨어요 선배?"
     "어어 이주야"
     "오늘 왜부른 거야?"
+    show ejoo_ending shadow with dissolve
     e "선배..."
+    show ejoo_ending smile
     e "저희 처음 만났을 때 기억나요?"
     "당연히 기억나지!"
     "내가 그때 널 잡아줬잖아!"
     e "ㅎㅎ 맞아요"
+    show ejoo_ending smileh with dissolve
     e "그때의 선배의 품... 따뜻했어요..."
     "하하 왜그래 갑자기ㅎㅎ"
+    show ejoo_ending shadowh
     e "그날 이후로 제 머릿속이 이상해졌어요..."
     e "시도때도 없이 선배로 머릿속이 가득 차버렸죠..."
     e "그날 저는 느꼈어요..."
+    show ejoo_ending 1
     e "갖고싶다."
+    show ejoo_ending idle
     "이주야...?"
+    show ejoo_ending smile
     e "선배! 급식실에서 제가 드렸던 베어브릭 잘 가지고 계시더라구요ㅎㅎ"
     "어어 그렇지..."
-    e "그때 선배가 저보고 다른 녀..."
+    show ejoo_ending y
+    e "그때 선배가 저보고 다른 년들이랑"
+    show ejoo_ending idle
+    e "아..."
+    show ejoo_ending smile
+    e "죄송해요..."
     e "다른 선배들한테 그냥 동아리 후배라고 했을 때\n얼마나 상처받았는지 알아요?"
     "아 이주야 그게 아니..."
     "잠만..."
     "그 얘기는 널 만난 급식실 줄에서 한 게 아니고"
     "멀리 떨어진 자리에서 애들한테 말한 건데..."
     "너가 그 얘기를 어떻게 알아...?"
+    show ejoo_ending idle
     e "아"
+    show ejoo_ending smile
     e "베어브릭에 작은 도청기를 심어놨어요..."
+    show ejoo_ending braveh
     e "좋아하는 사람이 멀리서도 하는 얘기를 듣고 싶어하는 건...\n당연하잖아요!"
     "뭐라고?"
+    show ejoo_ending smileh
     e "아 그걸로 선배가 홍대가신다는 것도 알아서 따라갔어요!"
+    show ejoo_ending idle with dissolve
     e "그런데..."
+    show ejoo_ending 5
     e "다른 여자들이 선배한테 달라붙더라구요...?"
+    show ejoo_ending idle
     "그럼... 그날 시선이 느껴졌던 건..."
+    show ejoo_ending smileh
     e "네! 하루종일 멀리서 지켜봤어요...!"
+    show ejoo_ending idleh with dissolve
     e "하지만 멀리서 바라보는 걸로는 성이 안 찼어요..."
+    show ejoo_ending shadowh with dissolve
     e "더 큰... 선배의 한 부분을 갖고 싶었죠..."
+    show ejoo_ending smileh
     e "때마침 동아리 축제준비때 선배가 드라이버를 쓰시고 계시더라구요!"
+    show ejoo_ending 2
     e "선배의 땀이 잔뜩 묻은..."
+    show ejoo_ending idle
     e "그래서"
+    show ejoo_ending driver
     e "선배가 안 보는 사이에 훔쳤어요!"
     e "처음으로 선배를 가진 듯한 기분이였어요..."
     "이주야... 너..."
+    show ejoo_ending smileh
     e "그런데 사람이란 게 욕심이 생기더라구요"
+    show ejoo_ending 5
     e "더 큰..."
+    show ejoo_ending idleh
     e "그래서 선배한테 만나자고 할려고 영화보러가자고 했는데"
     e "거기서 선배가 제 손을 잡았잖아요!"
+    show ejoo_ending hand1 with dissolve
     e "이것봐요!"
+    show ejoo_ending hand2
     e "그날 이후로 손 안 씻었어요!"
     e "매일 밤 이 손을 보며 선배를 떠올렸어요..."
-    e "그런데 시발"
-    e "아 죄송해요..."
+    show ejoo_ending idle with dissolve
+    e "그런데"
+    show ejoo_ending y
     e "화장 떡칠한 갸루년이 선배한테 달라붙더라구요?"
     e "내 건데..."
     e "나만 가질 수 있는데..."
+    show ejoo_ending idle
     e "그래서 아침에 사람이 많은 틈을 타"
+    show ejoo_ending smileh
     e "밀어버렸어요."
+    show ejoo_ending idle
     "정이주...넌 미쳤어..."
+    show ejoo_ending smile
     e "죽일 각오로 밀친 건데 운이 좋게 안 죽었더라구요?"
     e "뭐 아쉽게 됐죠..."
+    show ejoo_ending idleg with dissolve
     e "선배... 이것 봐요..."
     e "전 선배한테 이렇게 진심을 다하고 있어요..."
+    show ejoo_ending shadowh
     e "창피하지만..."
+    show ejoo_ending braveh
     e "전 선배를 좋아해요!"
+    show ejoo_ending surpriseh
     e "저랑 사귀실래요...?"
     menu:
         "넌 미쳤어.":
+            show ejoo_ending smile
             e "하하"
     e "맞아요"
     e "전 선배한테 미쳤어요"
+    show ejoo_ending idle
     e "살면서 이렇게 가지고 싶은 게 생긴 적... 처음이예요"
+    show ejoo_ending braveh
     e "저랑 사귀게 되면 잘해줄게요!"
     e "매일 사랑해줄게요!"
+    show ejoo_ending 1
     e "평생 나말고 다른 생각 안나게 해줄게!"
+    show ejoo_ending idle
     e "아... 죄송해요..."
+    show ejoo_ending shadowh with dissolve
     e "너무 흥분해서 저도 모르게 반말이..."
+    show ejoo_ending idle
     e "그럼 선배 다시 말할 게요."
+    show ejoo_ending smile
     e "저랑 함께 해줄래요?"
     menu:
         "싫어":
@@ -2192,32 +2324,51 @@ label ejoo_yending:
             ""
         "싫어":
             ""
+    show ejoo_ending 7
     e "왜요?"
     e "선배도 제가 싫어요?"
     e "싫은 거죠?"
     e "선배도 저 버리고 갈 거죠?"
+    show ejoo_ending shadow with dissolve
     e "선배도 다른 사람이랑 똑같아."
+    show ejoo_ending idle
     e "선배"
+    hide ejoo_ending
     e ""
     e ""
     e ""
-    e "가"
-    e "지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마\n가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마\n가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마\n가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마"
+    show ejoo_ending yy
+    e "가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마\n가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마\n가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마\n가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마"
+    scene black 
+    scene theend with dissolve
     "여덟 번째 엔딩"
     return
 
 label multi_ending:
+    scene ending1 with dissolve
     "아슬아슬하게 도착했다..."
     "앗 저기 보인다!"
     "여기야~"
     "???" "앗"
+    show hone_ending shadow at left with dissolve
     h "야 [player_name]... 이게 뭐하자는 거야?"
+    show nana_ending shadow with dissolve
     n "[player_name]군... 왜..."
+    show ejoo_ending at right with dissolve
     e "[player_name]선배... 왜 다른 사람까지..."
+    show hone_ending idle
+    show nana_ending idle
+    show ejoo_ending idle
     "모두들 들어줘!"
     "난 사실 너네들이 날 왜 부른 지 알고있어"
     "나한테 고백하려고 했지?"
+    show hone_ending surpriseh
+    show nana_ending surpriseh
+    show ejoo_ending surpriseh
     "김혜원,나나,정이주" "!"
+    show hone_ending idle
+    show nana_ending idle
+    show ejoo_ending idle
     "나도 이런 짓을 한 게 잘못된 걸 알아..."
     "하지만!"
     "난 너네들이 다 소중해!"
@@ -2226,34 +2377,49 @@ label multi_ending:
     "그래서 한 가지 방법을 떠올렸지..."
     "그건 바로..."
     "내가 너네들 전부와 사귀는 거야!"
+    show hone_ending surpriseh
+    show nana_ending surpriseh
+    show ejoo_ending surpriseh
     "김혜원,나나,정이주" "뭣...!"
     "어때 이러면 모두가 행복해질 수 있어!"
+    show hone_ending shadow
     h "[player_name]... 내가 너를 오랫동안 봐았지만..."
     h "이번 만큼은..."
     "(꿀꺽)"
+    show hone_ending idle with dissolve
     h "ㄱ... 괜찮은 아이디어네...!"
     "!"
+    show nana_ending braveh with dissolve
     n "나나도... [player_name]도 소중하지만\n다른 사람도 소중하니까..."
+    show ejoo_ending shadowh with dissolve
     e "ㅈ...저는 [player_name]선배랑 사귈 수만 있다면..."
     "그럼 모두 동의한 거야?"
+    show hone_ending smileh with dissolve
     h "그래"
+    show nana_ending smileh with dissolve
     n "응!"
+    show ejoo_ending smileh with dissolve
     e "네!"
     "모두들..."
     "사랑해!"
+    scene black with dissolve
     "그렇게 나 [player_name]..."
     "세 명의 여친을 사귀게 된다..."
+    scene theend with dissolve
     "일곱 번째 엔딩"
     return
 
 label solo_ending:
+    scene ending1 with dissolve
     "아슬아슬하게 도착했다..."
     "앗 저기 보인다!"
     "여기야~"
     "???" "앗"
+    show friend_ending idle with dissolve
     f "야 너 또 아슬아슬했다?"
     "ㅎㅎ 미안~"
     "자 빨리 놀자!"
+    scene black with dissolve
     "그렇다..."
     "나는 3명중 한 명을 택한다는 행동으로 인해"
     "선택받지 못한 두 명의 보복이 두려워"
@@ -2262,29 +2428,42 @@ label solo_ending:
     "이 사실을 떠올리자"
     "나는 18년동안 모쏠이었다."
     "그 이유가 이것이다."
+    scene theend with dissolve
     "여섯 번째 엔딩"
     return
 
 label ejoo_ending:
+    scene ending1 with dissolve
     "아슬아슬하게 도착했다..."
     "앗 저기 보인다!"
     "여기야~"
     "???" "앗"
+    show ejoo_ending idle with dissolve
     e "ㅅ... 선배~!"
     "이주야 오늘 좀 이쁘네?"
+    show ejoo_ending idleh with dissolve
     e "ㄱ... 감사합니다 선배..."
     "이주야 근데 오늘 왜 부른 거야?"
+    show ejoo_ending shadow with dissolve
     e "그게요..."
+    show ejoo_ending smile
     e "우선 좀 걸을까요...?"
+    scene ending2 with dissolve
+    show ejoo_ending idle with dissolve
     e "선배 저희 처음 만났을 때 기억나요?"
     e "그때 계단에서 안 넘어졌더라면 저희가 이렇게 같이 있을 수 없었겠죠..."
     "그렇지..."
+    show ejoo_ending shadow with dissolve
     e "저는 예전부터 사람들이 무서웠어요"
+    show ejoo_ending smile
     e "그런데 이상하게도 선배는 무섭지가 않았어요"
     e "선배랑 같이 동아리활동도 하고... 영화도 보러가고..."
+    show ejoo_ending idle
     e "선배랑 같이 지내면서 한 가지 생각이 들었어요..."
     "무슨 생각...?"
+    show ejoo_ending shadowh with dissolve
     e "이 사람을 놓치면 평생 후회하겠다..."
+    show ejoo_ending idleh
     e "선배"
     e "저 선배 좋아해요"
     e "지금 이 말을 한 걸 후회할 수도 있겠지만"
@@ -2294,10 +2473,14 @@ label ejoo_ending:
     "나도 너랑 같이 지내면서 비슷한 생각을 했어..."
     "이런 나라도 괜찮다면..."
     "좋아!"
+    show ejoo_ending surpriseh
     e "!"
+    show ejoo_ending smileh with dissolve
     e "선배 좋아해요!"
+    scene black with dissolve
     "그렇게 나는 18년의 모쏠인생을 끝내고"
     "여자친구를 사귀게 됐다."
+    scene theend with dissolve
     "다섯 번째 엔딩"
     return
 
@@ -2306,92 +2489,114 @@ label hone_ending:
     "앗 저기 보인다!"
     "여기야~"
     "???" "앗"
+    show hone_ending idle with dissolve
     h "[player_name]~!"
     "너 오늘 좀 예쁘네?"
+    show hone_ending idleh
     h "ㅁ...뭐야..."
+    show hone_ending shadowh with dissolve
     h "ㄱ...고마워"
+    show hone_ending idle
     "근데 오늘 왜 부른 거야?"
+    show hone_ending shadow with dissolve
     h "..."
+    show hone_ending smile
     h "일단 좀 걸을까...?"
+    scene ending2 with dissolve
+    show hone_ending idle with dissolve
     h "우리가 언제부터 알았지?"
     "음..."
     "유치원때부터 알고 지냈으니까...\n한 다섯살...?"
+    show hone_ending smile
     h "다섯살때부터 넌 언제나 변함없이 짜증났어"
     "하하..."
+    show hone_ending idle with dissolve
     h "그런데 밉지는 않았어"
     h "언제나 알게모르게 너한테서 힘을 얻는 나였어"
     h "나에게 너는 그저 오래 알고지낸 소꿉친구였어."
+    show hone_ending shadow with dissolve
     h "그때까지는..."
     "무슨 말이야?"
+    show hone_ending idle
     h "올해 나나가 전학오고 동아리에서도 이주라는 후배가 생겼잖아?"
+    show hone_ending shadowh with dissolve
     h "여자랑 어울리는 너를 보고 가슴 한편이 불편해지는 것을 느꼈어."
     h "처음에는 무슨 감정인지는 몰랐지만"
     h "이제는 확실하게 알 것 같아."
     h "[player_name]..."
+    show hone_ending idle
     h "난 너를 좋아해!"
     h "나랑... 사겨줄래...?"
     "혜원아..."
     "이런 나라도 괜찮으면..."
     "사귀자!"
+    show hone_ending surpriseh
     h "!"
+    show hone_ending smileh
     h "그래!"
+    scene black with dissolve
     "그렇게 나는 18년의 모쏠인생을 끝내고"
     "여자친구를 사귀게 됐다."
+    scene theend with dissolve
     "네 번째 엔딩"
     return
     
 label nana_ending:
+    scene ending1 with dissolve
     "아슬아슬하게 도착했다..."
     "앗 저기 보인다!"
     "여기야~"
     "???" "앗"
+    show nana_ending idle with dissolve
     n "[player_name]군~!"
     "ㅎㅎ 오늘 예쁘다"
+    show nana_ending idleh with dissolve
     n "아ㅎㅎ 고마워...ㅎㅎ"
     "근데 오늘 왜 부른 거야?"
+    show nana_ending shadow with dissolve
     n "그게..."
+    show nana_ending smile
     n "우선 좀 걸을까...?"
+    scene ending2 with dissolve
+    show nana_ending idle with dissolve
     n "[player_name]군 우리 처음 만났을 때 기억나?"
     "아... 기억나지"
     "급하게 학교 가다가 일본인 교복을 입은 사람이랑 부딪힌 기억은\n쉽게 못잊지"
+    show nana_ending smile
     n "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+    show nana_ending idle
     n "그땐 [player_name]군이 솔직히 좋은 인상은 아니였어"
     "아..."
     n "그런데 내가 전학오고나서 나를 엄청 챙겨줬잖아"
     n "그래서 처음엔 좋은 친구인 줄 알았어"
+    show nana_ending shadow with dissolve
     n "그런데..."
     n "[player_name]군과 같이 지내는 시간이 지날수록..."
+    show nana_ending shadowh
     n "조금씩 나의 마음을 눈치채기 시작했어..."
     n "애써 모른 척 했지만"
-    n "이제는 인정하고 용기를 내볼려고...!"
+    n "이제는 인정하고 용기를 내볼려고..."
     "무슨 소리야 나나?"
+    show nana_ending idleh with dissolve
     n "[player_name]군..."
+    show nana_ending brave
     n "나 야부키나나는..."
+    show nana_ending braveh with dissolve
     n "[player_name]군을 좋아합니다!"
     n "저랑 사귀어주세요!"
+    "나나..."
     "이런 나라도 괜찮다면..."
     "제가 남친이 되어도 될까요?"
+    show nana_ending surpriseh
     n "!"
+    show nana_ending smileh with dissolve
     n "모찌롱!(물론!)"
+    scene black with dissolve
     "그렇게 나는 18년의 모쏠인생을 끝내고"
     "여자친구를 사귀게 됐다."
+    scene theend with dissolve
     "세 번째 엔딩"
     return
 
-
-
-
-
-#나나선택지:8개
-#혜원선택지:8개
-#이주선택지:8개
-#이주엔딩포인트:6
-#매력포인트최대:20
-#매력포인트최소:0
-#고백날짜 10월10일
-#호감도 100이상이면 고백성공
-
-
-
-
 return
+
