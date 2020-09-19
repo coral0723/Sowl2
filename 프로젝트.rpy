@@ -42,6 +42,33 @@ init python:
             if self.m_point < 0:
                 self.m_point=0
 
+#####호감도 표시바########
+init:
+    screen lovePoint:
+        hbox:
+            xalign 0.5
+            yalign 0.4
+            text "현재 호감도"
+        frame:
+            xalign 0.5
+            yalign 0.6
+            vbox:
+                hbox:
+                    text "혜원"
+                    bar:
+                        value hone.h_point
+                        range 100
+                hbox:
+                    text "이주"
+                    bar:
+                        value ejoo.h_point
+                        range 100
+                hbox:
+                    text "나나"
+                    bar:
+                        value nana.h_point
+                        range 100
+                textbutton "돌아가기" action Return()
 
 
 
@@ -167,24 +194,10 @@ image ejoo_ending driver = "ejoo_ending_driver.png"
 image ejoo_ending hand1 = "ejoo_ending_hand1.png"
 image ejoo_ending hand2 = "ejoo_ending_hand2.png"
 image ejoo_ending 7 = "ejoo_ending_7.png"
-image ejoo_ending y1 = "ejoo_ending_y1.png"
-image ejoo_ending y2 = "ejoo_ending_y2.png"
-image ejoo_ending y3 = "ejoo_ending_y3.png"
-image ejoo_ending y4 = "ejoo_ending_y4.png"
-image ejoo_ending y5 = "ejoo_ending_y5.png"
-init:
-    image ejoo_ending yy:
-        'ejoo_ending_y1.png'
-        pause 0.05
-        'ejoo_ending_y2.png'
-        pause 0.05
-        'ejoo_ending_y3.png'
-        pause 0.05
-        'ejoo_ending_y4.png'
-        pause 0.05
-        'ejoo_ending_y5.png'
-        pause 0.05
-        repeat
+image ejoo_ending y1:
+    "ejoo_ending_y1.png"
+    linear 0.18 zoom 2.0
+
 
 
 
@@ -273,7 +286,7 @@ image hospital_roby = "background/hospital_roby.jpg"
 image hospital_morning = "background/hospital_morning.jpg"
 image hospital_night = "background/hospital_night.jpg"
 image hospital_desk = "background/hospital_desk.jpg"
-image ejoo_ending = "background/ejoo_ending.jpg"
+image ejooending = "background/ejooending.jpg"
 image ending1 = "background/ending1.jpg"
 image ending2 = "background/ending2.jpg"
 
@@ -300,6 +313,7 @@ label start:
 $player_name = renpy.input("이름을 입력해주세요.")
 
 scene room_morning
+play music "audio/normal.mp3" loop
 "[3월 3일]"
 "'창문 사이로 들어오는 따뜻한 햇빛...'"
 "'전혀 피곤하지 않은 몸...'"
@@ -343,7 +357,7 @@ h "미안한데 난 지각할 뻔한 상황이 있었던 거지 18년동안 한 
 show hone_uniform idle with dissolve
 h "그리고 너 오늘 지각맞아."
 h "우리반 시계 고장나서 5분 늦거든"
-"'이 여자는 나의 소꿉친구인 짜증나는 모범생 김헤원이다...'"
+"'이 여자는 나의 소꿉친구인 짜증나는 모범생 김혜원이다...'"
 "뭐라고?"
 "하... 담임쌤이 또 한소리 하시겠네..."
 h "아! 그리고 오늘 전학생 오는데 소문에 의하면 다른 나라에서 왔다던데?"
@@ -490,6 +504,7 @@ hide black
 "흠 플라텍 면접보는 반이 2학년 5반?"
 "복도를 걸어가며 반을 찾는다"
 "계단 앞을 지나가려는 그 순간"
+stop music
 show ejoo slip with dissolve
 "???" "아아앗!"
 "응?"
@@ -532,6 +547,7 @@ scene black
 hide stair
 "늦은 줄 알고 동아리 면접보는 곳으로 뛰어갔지만"
 "시간을 잘못봐서 3학년 면접시간보다 한 시간 빠른 2학년 면접보는 시간에 와버렸다"
+play music "audio/normal.mp3" loop
 scene classroom_front
 hide black
 "하... 어쩔 수 없지. 이 앞에서 기다려야겠다"
@@ -553,6 +569,7 @@ if ejoo.h_point==55:
     "앗, 면접보러 들어가야 되는데! 그럼 안녕!"
     show ejoo_uniform idle
     e "ㄴ...넵!"
+    stop music
     show ejoo_uniform shadowh with dissolve
     e "[player_name]선배..."
 elif ejoo.h_point == 45:
@@ -567,13 +584,16 @@ elif ejoo.h_point == 45:
     "그래 너랑 같이 동아리 활동 했으면 좋겠다."
     "앗, 면접보러 가야되는데! 그럼 안녕!"
     e "네..."
+    stop music
     e "[player_name]선배..."
 scene black
 hide classroom_front
 "다행히 면접에 늦지않았고 뛰어난 화술로 면접에 통과해 동아리에 합격했다"
+call screen lovePoint
 "[다음날]"
 scene classroom
 hide black
+play music "audio/normal.mp3" loop
 "아 제발 같이 먹자니까???"
 show hone_uniform angry at left with dissolve
 h "내가 왜 너랑 같이 밥을 먹어줘야 하는데!"
@@ -725,20 +745,22 @@ menu:
         h "어휴 진짜... 저런 애를 누가 사겨줄지..."
         "음 오늘 밥 맛잇넹"
         $player.minus(nana)
-scene black
+scene black with dissolve
 hide foodroom_chair
 "[다음날]"
+call screen lovePoint
 scene room_morning
 hide black
 "흐음..."
 "컴퓨터로 페이스북에 올라온 게시물을 확인한다"
 "여자에게 인기가 많아지려면... 옷을 잘입고 향수를 뿌리면 좋다...?"
 "좋았어! 오늘은 쇼핑이다!"
+stop music
 scene clothshop
 hide room_morning
+play music "audio/hongdaemusic.mp3" loop
 "[홍대의 어느 옷가게]"
 "흐음... 어떤 옷을 사지?"
-
 #mpoint1
 menu:
     "와이드 팬츠":
@@ -806,6 +828,7 @@ menu:
         scene hongdae
         hide perfumeshop
         "가게를 나온다"
+        play sound "audio/boom.mp3"
         show nana pikabu with vpunch
         n "왁!"
         hide nana pikabu
@@ -824,6 +847,7 @@ menu:
         scene hongdae
         hide perfumeshop
         "가게를 나온다"
+        play sound "audio/boom.mp3"
         show nana pikabu with vpunch
         n "왁!"
         hide nana pikabu
@@ -872,9 +896,12 @@ if ejoo.y_point == 2:
     "설마..."
     "오늘 나의 초이스로 여자들이 관심을 보이는 건가??"
     "ㅎㅎㅎㅎㅎ그럼 곤란한뎋ㅎㅎㅎ아잏ㅎㅎㅎㅎ"
+stop music
 scene black
+call screen lovePoint
 hide hongdae_night
 "[1주일 후]"
+play music "audio/normal.mp3" loop
 scene computerroom
 hide black
 "[동아리실]"
@@ -927,6 +954,7 @@ e "ㅈ...저는 RC카요..."
 "RC카?"
 "음...재밌겠네! 나도 그걸로 해야겠다!"
 "그럼 이주야 오늘부터 준비해볼까??"
+stop music fadeout 2.5
 show ejoo_uniform shadow with dissolve
 e "ㅇ...안 돼요..."
 "?!"
@@ -944,8 +972,10 @@ e "다음주 시험이잖아요...\n 그래서 다음 모임은 시험 끝나고
 scene black
 hide computerroom
 "[다음날]"
+play music "audio/normal.mp3" loop
 scene classroom
 hide black
+play sound "audio/dingdongdang.mp3"
 "딩동댕 딩동 딩디디딩(하교시간)"
 show friend_uniform idle with dissolve
 f "야 [player_name]! 빨리 피방가자!"
@@ -1019,6 +1049,7 @@ menu:
         $player.plus(hone)
 hide hone_uniform
 "[몇시간 후]"
+stop music
 show hone_uniform idle with dissolve
 "야 김혜원! 나 이거 좀 알려줘"
 h "뭔데?"
@@ -1026,6 +1057,7 @@ show hone_uniform question
 h "야 이렇게 거꾸로 보여주면 어떻게 설명하라고;"
 show hone_uniform idle
 h "기다려봐"
+play music "audio/heartbeat.mp3" loop
 hide hone_uniform with dissolve
 "김혜원이 주인공의 옆에 앉는다"
 show hone_uniform bigside with dissolve
@@ -1033,20 +1065,22 @@ h "...이건 이렇게 하는거야."
 show hone_uniform bigfront with dissolve
 h "이해됐어?"
 "고개를 돌린 그 순간 김혜원과 입김이 닿을 거리에서 눈이 마주친다."
-
 #hone5
 menu:
     "눈을 피한다":
+        stop music
         "아ㅆ..."
         show hone_uniform shadow
         h "(빠직)"
         show hone_uniform angryh with vpunch
+        play sound "audio/jap.mp3"
         h "야! 내가 열심히 가르쳐주는데 어?(퍽)"
         show hone_uniform angryh with vpunch
+        play sound "audio/jap.mp3"
         h "고맙다고 말하지는 못할 망정(퍽)"
         show hone_uniform angryh with vpunch
+        play sound "audio/jap.mp3"
         h "사람 기분 나쁘게 뭐? 씨??(퍽퍽)"
-        show hone_uniform angryh with vpunch
         "ㅁ...미안해! 잘못했어!!(쿨럭)"
         h "됐어! 이제 너한테 공부 안 가르쳐줘!"
         hide hone_uniform angry with easeoutleft
@@ -1062,6 +1096,7 @@ menu:
         "서로의 입술이..."
         hide hone_uniform
         show mom smile at left
+        stop music
         m "애들아! 엄마가 과일 깎아왔..."
         "..."
         show hone_uniform shadow at right
@@ -1079,12 +1114,15 @@ menu:
         "타이밍 진짜..."
         $player.plus(hone)
     "입술을 부딪힌다.":
+        stop music
         show hone_uniform idle
+        play sound "audio/kiss.mp3"
         h "!"
         show hone_uniform question
         h "ㄴ...너 지금 뭐한 거야???"
         "혜원아 ㄱ... 그게 아니라..."
         h "이 변태새끼!"
+        play sound "audio/jjak.mp3"
         show hone_uniform angry with vpunch
         "(짝)"
         h "꺼져버려 늑대같은 놈!!!"
@@ -1098,6 +1136,7 @@ menu:
         show ejoo_uniform at right with dissolve
         e "선배... 실망했어요..."
         "주위 사람들이 다 떠나가 남은 고등학교 생활을 아싸로 지내게 된다..."
+        play music "audio/endingmusic.mp3" loop
         scene theend
         hide classroom
         "첫번째 엔딩"
@@ -1106,6 +1145,8 @@ scene black
 hide room_morning
 "1주일 후 시험 결과는"
 "당연히 망했다."
+call screen lovePoint
+play music "audio/normal.mp3" loop
 scene computerroom
 hide black
 "[축제 전날]"
@@ -1248,13 +1289,16 @@ menu:
         $player.plus(ejoo)
         $ejoo.y_plus()
 scene black
+stop music
 "그렇게 축제는 끝이나고"
 "방학이 시작되었다."
+call screen lovePoint
 jump start2
 return
 
 label start2:
 scene room_morning
+play music "audio/bored.mp3" loop
 hide black with dissolve
 "하암... 방학인데 지루하넴..."
 show mom angry
@@ -1445,6 +1489,7 @@ show nana_c2 back with dissolve
 menu:
     "잡아준다":
         show nana_c2 backclap with vpunch
+        play sound "audio/jjak.mp3"
         "짝!"
         show nana_c2 idle
         n "히익! 갑자기 뭐야?"
@@ -1460,9 +1505,11 @@ menu:
         show nana_c2 idle with dissolve
         n "응?"
         show nana_c2 scream with vpunch
+        stop music
         n "꺄아아아앍!"
         "어어!"
         "벌레를 보고 놀란 나나는 깜짝놀라 넘어져\n다리 밑으로 떨어질 뻔한 상황이다."
+        play music "audio/sadmusic.mp3" loop
         scene nana_diving1 with dissolve
         "나나야!"
         n "[player_name]군..."
@@ -1529,9 +1576,12 @@ scene countryside_night with dissolve
 show nana_c2 idle with dissolve
 n "[player_name]군! 학교에서 봐~!"
 "그래그래"
+stop music fadeout 2.0
 scene black with dissolve
 "이렇게 길고도 짧은 방학이 끝나고..."
 "2학기가 시작되었다."
+call screen lovePoint
+play music "audio/normal.mp3" loop
 scene computerroom with dissolve
 show dh scream
 dh "자, 이걸로 올해 동아리활동은 끝이야!"
@@ -1613,6 +1663,7 @@ scene cgv with dissolve
 show ejoo_c1 idle
 e "ㄴ... 네!"
 hide ejoo_c1 with dissolve
+stop music fadeout 2.0
 "영화가 시작되고"
 "키스하는 장면이 나온다."
 "'와...'"
@@ -1647,6 +1698,7 @@ menu:
         $player.plus(ejoo)
         $ejoo.y_plus()
 scene black with dissolve
+play music "audio/normal.mp3" loop
 "영화가 끝나고..."
 scene cgv_roby with dissolve
 show ejoo_c1 idle with dissolve
@@ -1679,6 +1731,7 @@ else:
     e "ㄴ...네...!"
 scene black with dissolve
 "[몇주후]"
+call screen lovePoint
 scene classroom with dissolve
 "벌써 중간고사기간인가..."
 show friend_uniform idle with easeinright
@@ -1737,7 +1790,7 @@ show hone_uniform idle with dissolve
 h "어때 독서실에서 하니까 공부는 할 만해?"
 "똑같이 힘든데... 왜이러지?"
 show hone_uniform bsmile
-h "ㅋㅋㅋㅋㅋ독설실에서 공부한다고 돌머리가 갑자기\n집중이 되겠어?"
+h "ㅋㅋㅋㅋㅋ독서실에서 공부한다고 돌머리가 갑자기\n집중이 되겠어?"
 "아, 조용히 해;"
 h "ㅋㅋㅋㅋㅋ 수고하고 난 다시 들어가서 공부한다~"
 "그러든지..."
@@ -1772,10 +1825,12 @@ menu:
         "옴뇸뇸~ 커피 개꿀맛~(속닥속닥)"
         show hone_uniform shadow
         h "(빠직)"
+        stop music fadeout 2.0
         show hone_uniform bsmile with dissolve
         h "ㅎㅎ"
         "(뭐지... 왜 갑자기 기분나쁘게 웃지?)"
         h "죽어."
+        play sound "audio/jap.mp3"
         show hone_uniform idle with vpunch
         scene black with dissolve
         "나의 고간에 매우 큰 충격이 가해졌고..."
@@ -1783,8 +1838,8 @@ menu:
         if hone.h_point >= 100:
             "깨어났을 때는 내 휴대폰으로 문자하나가 와있었다."
             h "10월 10일에 나와."
-            jump start4
-            return
+        jump start4
+        return
 
 label selection5:
 scene studyroom with dissolve
@@ -1807,6 +1862,7 @@ scene hone_whisper2 with dissolve
 scene studyroom
 show hone_uniform idleh
 h "ㅎㅎ"
+stop music fadeout 2.0
 jump start4
 return
 
@@ -1829,6 +1885,7 @@ h "에휴 됐어..."
 show hone_uniform angry
 h "빨리 가서 공부나 해!"
 "ㅇ... 알겠어..."
+stop music fadeout 2.0
 if hone.h_point >= 100:
     show hone_uniform idle with dissolve
     h "야 잠깐만"
@@ -1857,7 +1914,9 @@ scene black with dissolve
 "2학기 중간고사가 다가왔고"
 "결과는"
 "당연히 망했다."
+call screen lovePoint
 scene classroom with dissolve
+play music "audio/hongdaemusic.mp3" loop
 "[다음날]"
 "하암... 등교시간 좀 늦춰주면 안 되나...?"
 show hone_uniform angry with dissolve
@@ -2082,9 +2141,10 @@ scene hospital_roby with dissolve
 n "[player_name]군...ㅈㅇ..."
 "내 이름이 들린 것 같은데?"
 "귀를 문에 더 가까이 댄다."
+stop music fadeout 2.0
 scene hospital_night with dissolve
 n "[player_name]군... 좋아해..."
-n "처음 봤을 때부터... 잊혀지지않아..."
+n "처음 봤을 때부터... 잊을 수 없어..."
 n "내 마음 한 칸을 차지하고 있는 걸..."
 show nana_patient back with dissolve
 n "10월 10일에... 꼭..."
@@ -2126,6 +2186,7 @@ menu:
 scene black with dissolve
 "그렇게 시간이 흘러..."
 "10월 10일이 되었다."
+call screen lovePoint
 scene room_morning with dissolve
 "어떡하지..."
 "얼떨결에 10월 10일에 이주, 김혜원, 나나한테 시간이 된다고 해버렸네..."
@@ -2144,12 +2205,16 @@ elif ejoo.h_point >= 100 and hone.h_point >= 100 and nana.h_point >= 100:
 elif ejoo.h_point<100 and hone.h_point <100 and nana.h_point < 100:
     jump solo_ending
     return
-elif ejoo.h_point >= 100 and ejoo.h_point >=hone.h_point:
-    if ejoo.h_point >= nana.h_point:
-        jump ejoo_ending
-        return
-    elif ejoo.h_point <= nana.h_point:
-        jump nana_ending
+elif ejoo.h_point >= 100:
+    if ejoo.h_point >= hone.h_point:
+        if ejoo.h_point >= nana.h_point:
+            jump ejoo_ending
+            return
+        else:
+            jump nana_ending
+            return
+    else:
+        jump hone_ending
         return
 elif hone.h_point >= 100:
     if hone.h_point >= nana.h_point:
@@ -2158,16 +2223,20 @@ elif hone.h_point >= 100:
     else:
         jump nana_ending
         return
+elif nana.h_point >= 100:
+    jump nana_ending
+    return
 else:
     jump solo_ending
     return
 
 label ejoo_yending:
-    scene ejoo_ending with dissolve
+    scene ejooending with dissolve
     "아슬아슬하게 도착했다..."
     "앗 저기 보인다!"
     "여기야~"
     "???" "앗"
+    play music "audio/horror.mp3" loop
     show ejoo_ending idle
     e "오셨어요 선배?"
     "어어 이주야"
@@ -2263,7 +2332,7 @@ label ejoo_yending:
     show ejoo_ending smile
     e "죽일 각오로 밀친 건데 운이 좋게 안 죽었더라구요?"
     e "뭐 아쉽게 됐죠..."
-    show ejoo_ending idleg with dissolve
+    show ejoo_ending idle with dissolve
     e "선배... 이것 봐요..."
     e "전 선배한테 이렇게 진심을 다하고 있어요..."
     show ejoo_ending shadowh
@@ -2325,6 +2394,7 @@ label ejoo_yending:
         "싫어":
             ""
     show ejoo_ending 7
+    stop music
     e "왜요?"
     e "선배도 제가 싫어요?"
     e "싫은 거죠?"
@@ -2337,14 +2407,15 @@ label ejoo_yending:
     e ""
     e ""
     e ""
-    show ejoo_ending yy
-    e "가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마\n가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마\n가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마\n가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마가지마"
-    scene black 
+    show ejoo_ending y1
+    play music "audio/scream.mp3"
+    scene black
     scene theend with dissolve
     "여덟 번째 엔딩"
     return
 
 label multi_ending:
+    play music "audio/romantic.mp3" loop
     scene ending1 with dissolve
     "아슬아슬하게 도착했다..."
     "앗 저기 보인다!"
@@ -2428,11 +2499,13 @@ label solo_ending:
     "이 사실을 떠올리자"
     "나는 18년동안 모쏠이었다."
     "그 이유가 이것이다."
+    play music "audio/endingmusic.mp3" loop
     scene theend with dissolve
     "여섯 번째 엔딩"
     return
 
 label ejoo_ending:
+    play music "audio/romantic.mp3" loop
     scene ending1 with dissolve
     "아슬아슬하게 도착했다..."
     "앗 저기 보인다!"
@@ -2485,6 +2558,7 @@ label ejoo_ending:
     return
 
 label hone_ending:
+    play music "audio/romantic.mp3" loop
     "아슬아슬하게 도착했다..."
     "앗 저기 보인다!"
     "여기야~"
@@ -2542,6 +2616,7 @@ label hone_ending:
     return
     
 label nana_ending:
+    play music "audio/romantic.mp3" loop
     scene ending1 with dissolve
     "아슬아슬하게 도착했다..."
     "앗 저기 보인다!"
@@ -2597,6 +2672,5 @@ label nana_ending:
     scene theend with dissolve
     "세 번째 엔딩"
     return
-
+    
 return
-
